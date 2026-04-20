@@ -28,3 +28,4 @@ export LESS="-R --quit-if-one-screen --no-init"
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONUNBUFFERED=1
 
+export DL="/storage/emulated/0/Download"

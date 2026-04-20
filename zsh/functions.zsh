@@ -96,19 +96,36 @@ share() {
   fi
 }
 
-# bring <file>  → รับ file จาก Download/ มา $PWD
+# bring <file> [--dst <path>] [--clean]
 # bring         → fzf เลือกไฟล์ใน Download/ (ซ่อน secrets/keys)
+# --dst <path>  → cp ไปที่ path แทน $PWD
+# --clean       → ลบไฟล์ใน $DL หลัง cp
 bring() {
   local exclude_args=()
   for d in "${_DL_EXCLUDE[@]}"; do exclude_args+=(--exclude "$d"); done
 
-  if [[ -n "$1" ]]; then
-    cp "$_DL/$1" "$PWD/" && echo "\033[0;32m✓ $1 → $PWD/\033[0m"
+  local file="" dst="$PWD" clean=0 positional=""
+
+  # parse args
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --dst)   dst="$2"; shift 2 ;;
+      --clean) clean=1; shift ;;
+      *)       positional="$1"; shift ;;
+    esac
+  done
+
+  if [[ -n "$positional" ]]; then
+    file="$_DL/$positional"
+    cp "$file" "$dst/" && echo "\033[0;32m✓ $positional → $dst/\033[0m" || return 1
+    (( clean )) && rm -f "$file" && echo "\033[0;90m  cleaned: $positional\033[0m"
   else
-    local file
-    file=$(fd --type f --max-depth 1 "${exclude_args[@]}" . "$_DL" 2>/dev/null \
+    local picked
+    picked=$(fd --type f --max-depth 1 "${exclude_args[@]}" . "$_DL" 2>/dev/null \
       | fzf --prompt="bring ➤ " --preview='bat --color=always {}')
-    [[ -n "$file" ]] && cp "$file" "$PWD/" && echo "\033[0;32m✓ $(basename $file) → $PWD/\033[0m"
+    [[ -z "$picked" ]] && return
+    cp "$picked" "$dst/" && echo "\033[0;32m✓ $(basename $picked) → $dst/\033[0m" || return 1
+    (( clean )) && rm -f "$picked" && echo "\033[0;90m  cleaned: $(basename $picked)\033[0m"
   fi
 }
 
