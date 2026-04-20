@@ -234,3 +234,14 @@ scall() {
   esac
   _scall_footer
 }
+
+# ── NLOG ─────────────────────────────────────────────────
+# nlog "msg" → append timestamp + msg ไป dev-log.md
+unalias nlog 2>/dev/null
+nlog() {
+  local msg="$*"
+  local devlog="$VAULT/02-areas/dev-log.md"
+  local ts=$(date '+%Y-%m-%d %H:%M')
+  echo "- $ts · $msg" >> "$devlog"
+  echo "\033[0;32m✓ logged → dev-log.md\033[0m"
+}

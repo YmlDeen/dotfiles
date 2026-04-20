@@ -38,7 +38,6 @@ alias pip='pip3'
 
 # ── NOTE ─────────────────────────────────────────────────
 alias n='bash $NOTE_SH'
-alias nlog='bash $NOTE_SH log'
 alias nd='bash $NOTE_SH daily'
 
 # ── KOS ──────────────────────────────────────────────────
