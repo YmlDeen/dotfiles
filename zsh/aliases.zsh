@@ -37,8 +37,9 @@ alias py='python'
 alias pip='pip3'
 
 # ── NOTE ─────────────────────────────────────────────────
-alias n='bash $NOTE_SH'
-alias nd='bash $NOTE_SH daily'
+alias n='bash $HOME/projects/notes/note.sh'
+alias nd='bash $HOME/projects/notes/note.sh --daily'
+alias nai='bash $HOME/projects/notes/note.sh --ai'
 
 # ── KOS ──────────────────────────────────────────────────
 alias kc='kos capture'

@@ -250,5 +250,6 @@ nlog() {
   local devlog="$VAULT/02-areas/dev-log.md"
   local ts=$(date '+%Y-%m-%d %H:%M')
   echo "- $ts · $msg" >> "$devlog"
-  echo "\033[0;32m✓ logged → dev-log.md\033[0m"
+  bash "$HOME/projects/notes/note.sh" "$msg" 2>/dev/null
+  echo "\033[0;32m✓ logged → dev-log.md + inbox\033[0m"
 }
