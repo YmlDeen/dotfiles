@@ -15,10 +15,17 @@ JUMP_DIRS[zsh]="$HOME/.config/zsh"
 
 j() {
   if [[ -z "$1" ]]; then
-    echo "\033[1;36m── Jump Bookmarks ─────────────────\033[0m"
-    for k in "${(@k)JUMP_DIRS}"; do
-      printf "  \033[1;33m%-8s\033[0m → \033[0;37m%s\033[0m\n" "$k" "${JUMP_DIRS[$k]}"
-    done
+    local key
+    key=$(
+      for k in "${(@k)JUMP_DIRS}"; do
+        printf "%-8s → %s\n" "$k" "${JUMP_DIRS[$k]}"
+      done | fzf --prompt="jump ➤ " \
+                 --preview='eza --tree --level=2 --color=always "$(echo {} | awk -F" → " "{print \$2}")"' \
+                 --preview-window=right:55%
+    )
+    [[ -z "$key" ]] && return
+    local target="${JUMP_DIRS[${key%% *}]}"
+    [[ -n "$target" ]] && cd "$target" && echo "\033[0;32m➤ $target\033[0m"
     return
   fi
   local target="${JUMP_DIRS[$1]}"
