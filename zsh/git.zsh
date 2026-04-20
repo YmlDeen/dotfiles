@@ -18,19 +18,38 @@ gsave() {
 gsaveall() {
   local msg="${1:-update}"
   local repos=(
+    ~/dotfiles
     ~/kos
     ~/projects/bugscan
-    ~/projects/dex
-    ~/projects/axl
+    ~/projects/exl
     ~/projects/linkbox
     ~/projects/sysreport
-    ~/projects/tools
+      )~/projects/tools
+    ~/projects/notes
   )
+  local pushed=() skipped=() failed=()
+
   for repo in "${repos[@]}"; do
-    echo "\n\033[1;36m── $(basename $repo) ──\033[0m"
-    cd "$repo" && git add . && git commit -m "$msg" && git push \
-      && echo "\033[0;32m✓ pushed\033[0m" \
-      || echo "\033[0;33m✗ failed/nothing\033[0m"
+    local name=$(basename $repo)
+    if [[ ! -d "$repo/.git" ]]; then
+      skipped+=("$name")
+      continue
+    fi
+    echo "\n\033[1;36m── $name ──\033[0m"
+    cd "$repo"
+    if [[ -z "$(git status --porcelain)" ]]; then
+      echo "\033[0;90m  nothing to commit\033[0m"
+      skipped+=("$name")
+    else
+      git add . && git commit -m "$msg" && git push \
+        && pushed+=("$name") \
+        || failed+=("$name")
+    fi
   done
+
   cd ~
+  echo "\n\033[1;36m── SUMMARY ─────────────────────────\033[0m"
+  [[ ${#pushed[@]}  -gt 0 ]] && echo "\033[0;32m  ✓ pushed  : ${pushed[*]}\033[0m"
+  [[ ${#skipped[@]} -gt 0 ]] && echo "\033[0;90m  – clean   : ${skipped[*]}\033[0m"
+  [[ ${#failed[@]}  -gt 0 ]] && echo "\033[0;31m  ✗ failed  : ${failed[*]}\033[0m"
 }
