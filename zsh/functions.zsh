@@ -116,6 +116,19 @@ inbox() {
   [[ -n "$file" ]] && bat "$file"
 }
 
+# ── REP
+unalias rep 2>/dev/null ──────────────────────────────────────────────────
+# rep → รัน sysreport + copy ไป $DL อัตโนมัติ
+rep() {
+  bash "$HOME/projects/sysreport/sysreport.sh"
+  local latest
+  latest=$(ls "$HOME/projects/sysreport/reports/"*.md 2>/dev/null | sort | tail -1)
+  if [[ -n "$latest" ]]; then
+    cp "$latest" "$_DL/"
+    echo "\033[0;32m✓ copied → Download/$(basename $latest)\033[0m"
+  fi
+}
+
 # ── SCALL ────────────────────────────────────────────────
 # scall         → แสดงทุก section
 # scall nav     → NAV only
@@ -138,7 +151,7 @@ _scall_footer() {
 }
 
 _scall_nav() {
-  echo "  \033[1;36m║\033[0m  \033[1;35mNAV\033[0m  — ย้าย folder                   \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[1;35mNAV\033[0m  — ย้าย folder          \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  j <n>         ไปที่ bookmark           \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  ja <n> <p>    เพิ่ม bookmark ใหม่      \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  fj            fzf เลือก folder         \033[1;36m║\033[0m"
@@ -148,7 +161,7 @@ _scall_nav() {
 }
 
 _scall_note() {
-  echo "  \033[1;36m║\033[0m  \033[1;35mNOTE\033[0m  — บันทึก                       \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[1;35mNOTE\033[0m  — บันทึก         \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  n \"title\"     จดโน้ตลง inbox           \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  nlog \"msg\"    บันทึกลง dev-log         \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  nd            เปิด daily note วันนี้    \033[1;36m║\033[0m"
@@ -157,14 +170,13 @@ _scall_note() {
 }
 
 _scall_web() {
-  echo "  \033[1;36m║\033[0m  \033[1;35mWEB\033[0m  — เปิด web app                  \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  dex           Dev Execution  :3001      \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  axl           AI agent UI   :3002      \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  linkbox       Local Tool Hub :3003      \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[1;35mWEB\033[0m  — เปิด web app          \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  exl           Smart Notes   :3005      \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  linkbox       Link Manager  :3003      \033[1;36m║\033[0m"
 }
 
 _scall_git() {
-  echo "  \033[1;36m║\033[0m  \033[1;35mGIT\033[0m  — version control               \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[1;35mGIT\033[0m  — version control           \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  gs            status                   \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  ga .          add all                  \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  gc \"msg\"      commit                   \033[1;36m║\033[0m"
@@ -176,26 +188,25 @@ _scall_git() {
 }
 
 _scall_tools() {
-  echo "  \033[1;36m║\033[0m  \033[1;35mTOOLS\033[0m  — เครื่องมือ                  \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[1;35mTOOLS\033[0m  — เครื่องมือ        \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  share [file]  ส่งไป Download/ (fzf)    \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  bring [file]  รับจาก Download/ (fzf)   \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  bugscan <p>   หาบัคในโค้ด               \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  rep           system report             \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  ussdth        รหัสลัดมือถือไทย          \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  bs            bugscan current dir       \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  rep           system report + copy DL   \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  ff            fzf open file in nvim     \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  size          ncdu disk usage           \033[1;36m║\033[0m"
 }
 
 _scall_config() {
-  echo "  \033[1;36m║\033[0m  \033[1;35mCONFIG\033[0m  — ตั้งค่า shell               \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[1;35mCONFIG\033[0m  — ตั้งค่า shell         \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  zrc           reload .zshrc             \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  edit-zrc      แก้ .zshrc + reload       \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  upcp          sync CLAUDE.md → vault    \033[1;36m║\033[0m"
   echo "  \033[1;36m╠─────────────────────────────────────────╣\033[0m"
-  echo "  \033[1;36m║\033[0m  \033[1;35mSAFETY\033[0m  — สีลูกศร prompt              \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  \033[0;32m🟢 └─➤\033[0m  ~/  ปลอดภัย                  \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[1;35mSAFETY\033[0m  — สีลูกศร prompt          \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[0;32m🟢 └─➤\033[0m  ~/  ปลอดภัย          \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  🟠 └─➤  /storage  ระวัง                \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  \033[0;31m🔴 └─❯\033[0m  /system  อันตราย!            \033[1;36m║\033[0m"
+  echo "  \033[1;36m║\033[0m  \033[0;31m🔴 └─❯\033[0m  /system  อันตราย!          \033[1;36m║\033[0m"
 }
 
 _scall_divider() {
