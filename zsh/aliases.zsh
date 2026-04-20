@@ -54,6 +54,7 @@ alias upcp='cp /storage/emulated/0/Download/CLAUDE.md $VAULT/system/CLAUDE.md &&
 # ── CLI TOOLS ────────────────────────────────────────────
 alias bugscan='bash $HOME/projects/bugscan/bugscan.sh'
 alias ussdth='python $HOME/projects/tools/ussdth.py'
+alias hc='bash ~/projects/tools/hcheck.sh'
 
 # bugscan shortcuts
 alias bs='bugscan . -s node_modules'
@@ -62,3 +63,5 @@ alias bso='bugscan . -s node_modules -o'
 alias bsdiff='bugscan --diff'
 
 alias vsave='cd $VAULT && git add system/CLAUDE.md && git commit -m "claude update $(date +%Y-%m-%d)" && cd -'
+
+

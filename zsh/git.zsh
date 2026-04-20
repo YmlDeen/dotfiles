@@ -24,7 +24,7 @@ gsaveall() {
     ~/projects/exl
     ~/projects/linkbox
     ~/projects/sysreport
-      )~/projects/tools
+    ~/projects/tools
     ~/projects/notes
   )
   local pushed=() skipped=() failed=()
