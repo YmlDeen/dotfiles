@@ -36,20 +36,10 @@ alias size='ncdu'
 alias py='python'
 alias pip='pip3'
 
-# ── NOTE ─────────────────────────────────────────────────
-alias n='bash $HOME/projects/notes/note.sh'
-alias nd='bash $HOME/projects/notes/note.sh --daily'
-alias nai='bash $HOME/projects/notes/note.sh --ai'
-
-# ── KOS ──────────────────────────────────────────────────
-alias kc='kos capture'
-alias ks='kos status'
-alias kd='kos daily'
-alias kf='kos search'
-
 # ── VAULT ────────────────────────────────────────────────
 alias upmv='mv /storage/emulated/0/Download/CLAUDE.md $VAULT/system/CLAUDE.md && echo "✓ CLAUDE.md → vault" || echo "✗ failed"'
 alias upcp='cp /storage/emulated/0/Download/CLAUDE.md $VAULT/system/CLAUDE.md && echo "✓ CLAUDE.md → vault" || echo "✗ failed"'
+alias vsave='cd $VAULT && git add system/CLAUDE.md && git commit -m "claude update $(date +%Y-%m-%d)" && cd -'
 
 # ── CLI TOOLS ────────────────────────────────────────────
 alias bugscan='bash $HOME/projects/bugscan/bugscan.sh'
@@ -62,14 +52,7 @@ alias bsd='bugscan . -s node_modules -d'
 alias bso='bugscan . -s node_modules -o'
 alias bsdiff='bugscan --diff'
 
-alias vsave='cd $VAULT && git add system/CLAUDE.md && git commit -m "claude update $(date +%Y-%m-%d)" && cd -'
-
-
-
-# health check
+# ── ECOSYSTEM ─────────────────────────────────────────────
 alias health='bash ~/projects/tools/health.sh'
-
-# health check
-alias health='bash ~/projects/tools/health.sh'
-
 alias forge='node ~/projects/tools/forge/index.js'
+alias pk='pk'
