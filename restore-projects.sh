@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 BASE="https://github.com/YmlDeen"
 repos=(KOS exl linkbox notes bugscan sysreport tools dotfiles)
 
