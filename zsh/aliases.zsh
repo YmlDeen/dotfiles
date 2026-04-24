@@ -65,3 +65,6 @@ alias bsdiff='bugscan --diff'
 alias vsave='cd $VAULT && git add system/CLAUDE.md && git commit -m "claude update $(date +%Y-%m-%d)" && cd -'
 
 
+
+# health check
+alias health='bash ~/projects/tools/health.sh'
