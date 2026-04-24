@@ -68,3 +68,8 @@ alias vsave='cd $VAULT && git add system/CLAUDE.md && git commit -m "claude upda
 
 # health check
 alias health='bash ~/projects/tools/health.sh'
+
+# health check
+alias health='bash ~/projects/tools/health.sh'
+
+alias forge='node ~/projects/tools/forge/index.js'
