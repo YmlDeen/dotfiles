@@ -142,14 +142,12 @@ inbox() {
 
 # ── REP
 unalias rep 2>/dev/null ──────────────────────────────────────────────────
-# rep → รัน sysreport + copy ไป $DL อัตโนมัติ
 rep() {
   bash "$HOME/projects/sysreport/sysreport.sh"
   local latest
-  latest=$(ls "$HOME/projects/sysreport/reports/"*.md 2>/dev/null | sort | tail -1)
+  latest=$(ls "$_DL"/report_*.md 2>/dev/null | sort | tail -1)
   if [[ -n "$latest" ]]; then
-    cp "$latest" "$_DL/"
-    echo "\033[0;32m✓ copied → Download/$(basename $latest)\033[0m"
+    echo "\033[0;32m✓ report → $(basename $latest)\033[0m"
   fi
 }
 

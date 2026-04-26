@@ -29,3 +29,4 @@ export PYTHONDONTWRITEBYTECODE=1
 export PYTHONUNBUFFERED=1
 
 export DL="/storage/emulated/0/Download"
+export PATH="$HOME/bin:$PATH"

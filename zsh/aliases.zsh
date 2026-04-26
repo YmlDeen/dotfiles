@@ -56,3 +56,16 @@ alias bsdiff='bugscan --diff'
 alias health='bash ~/projects/tools/health.sh'
 alias forge='node ~/projects/tools/forge/index.js'
 alias pk='pk'
+
+# scanxl
+alias scanxl='node ~/projects/scanxl/cli.js'
+
+# Ecosystem SaaS
+alias ecosystem='cd /data/data/com.termux/files/home/projects/ecosystem && bash start.sh'
+
+# ctx
+alias ctxs='ctx . --sig --stat'
+alias ctxp='ctx . --strip --stat'
+alias ctxo='ctx . --strip --out /storage/emulated/0/Download/ctx_out.txt && echo "[ctx] done → Download/ctx_out.txt"'
+
+alias clu='nx sync-claude && upcp && vsave && git -C ~/projects/vault push'
