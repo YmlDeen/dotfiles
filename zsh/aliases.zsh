@@ -39,7 +39,7 @@ alias pip='pip3'
 # ── VAULT ────────────────────────────────────────────────
 alias upmv='mv /storage/emulated/0/Download/CLAUDE.md $VAULT/system/CLAUDE.md && echo "✓ CLAUDE.md → vault" || echo "✗ failed"'
 alias upcp='cp /storage/emulated/0/Download/CLAUDE.md $VAULT/system/CLAUDE.md && echo "✓ CLAUDE.md → vault" || echo "✗ failed"'
-alias vsave='cd $VAULT && git add system/CLAUDE.md && git commit -m "claude update $(date +%Y-%m-%d)" && cd -'
+# vsave moved to line 75 — vault-sync
 
 # ── CLI TOOLS ────────────────────────────────────────────
 alias bugscan='bash $HOME/projects/bugscan/bugscan.sh'
@@ -69,3 +69,12 @@ alias ctxp='ctx . --strip --stat'
 alias ctxo='ctx . --strip --out /storage/emulated/0/Download/ctx_out.txt && echo "[ctx] done → Download/ctx_out.txt"'
 
 alias clu='nx sync-claude && upcp && vsave && git -C ~/projects/vault push'
+
+alias cls='nx snap && ctx ~/projects/nexus --strip --sig --stat > ~/projects/nexus/tmp/ctx_nexus.txt && share ~/projects/nexus/tmp/ctx_nexus.txt && echo "แนบ CLAUDE.md + snap + ctx_nexus.txt"'
+
+alias vsave='cd $VAULT && git add -A && git commit -m "vault: save" && git push && ~/projects/vault-sync/vsync.sh'
+
+alias imp='node ~/projects/tools/imgprompt.mjs'
+alias vps='ssh -i ~/.ssh/id_ed25519 ubuntu@54.179.174.46'
+alias hm='hermes'
+alias hg='hermes gateway'

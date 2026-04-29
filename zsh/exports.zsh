@@ -30,3 +30,6 @@ export PYTHONUNBUFFERED=1
 
 export DL="/storage/emulated/0/Download"
 export PATH="$HOME/bin:$PATH"
+
+# วางใน ~/.config/zsh/exports.zsh แล้วใส่ key จริง
+
