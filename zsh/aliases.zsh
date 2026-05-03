@@ -76,3 +76,4 @@ alias vps='ssh -i ~/.ssh/id_ed25519 ubuntu@54.179.174.46'
 
 alias debian='proot-distro login debian'
 alias fedora='proot-distro login fedora'
+
