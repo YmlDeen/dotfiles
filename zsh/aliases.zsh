@@ -54,7 +54,6 @@ alias bsdiff='bugscan --diff'
 # ── ECOSYSTEM ─────────────────────────────────────────────
 alias health='bash ~/projects/tools/health.sh'
 alias forge='node ~/projects/tools/forge/index.js'
-alias pk='pk'
 
 
 # Ecosystem SaaS
@@ -77,3 +76,10 @@ alias vps='ssh -i ~/.ssh/id_ed25519 ubuntu@54.179.174.46'
 alias debian='proot-distro login debian'
 alias fedora='proot-distro login fedora'
 
+alias web='cd ~/projects/web && npx http-server -p 8080'
+
+# web aliases
+alias webserv='cd ~/projects/web && python3 -m http.server 8080'
+alias admin='cd ~/projects/web && python3 -m http.server 8080 & sleep 0.5 && echo "→ http://127.0.0.1:8080/admin.html"'
+
+alias ramclear='kill $(ps aux | grep -E "node|python" | grep -v grep | awk '"'"'{print $2}'"'"') 2>/dev/null; free -h'
