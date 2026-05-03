@@ -133,7 +133,7 @@ bring() {
 # inbox → fzf เลือก note ใน vault/00-inbox/
 inbox() {
   local file
-  file=$(fd --type f --extension md . "$KOS_INBOX" 2>/dev/null \
+  file=$(fd --type f --extension md . "$VAULT/00-inbox" 2>/dev/null \
     | fzf --prompt="inbox ➤ " \
           --preview='bat --color=always {}' \
           --preview-window=right:60%:wrap)
@@ -187,13 +187,11 @@ _scall_note() {
   echo "  \033[1;36m║\033[0m  n \"title\"     จดโน้ตลง inbox           \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  nlog \"msg\"    บันทึกลง dev-log         \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  nd            เปิด daily note วันนี้    \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  kc            บันทึกลง KOS              \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  inbox         fzf เปิด note ใน inbox    \033[1;36m║\033[0m"
 }
 
 _scall_web() {
   echo "  \033[1;36m║\033[0m  \033[1;35mWEB\033[0m  — เปิด web app          \033[1;36m║\033[0m"
-  echo "  \033[1;36m║\033[0m  exl           Smart Notes   :3005      \033[1;36m║\033[0m"
   echo "  \033[1;36m║\033[0m  linkbox       Link Manager  :3003      \033[1;36m║\033[0m"
 }
 
@@ -265,6 +263,5 @@ nlog() {
   local devlog="$VAULT/02-areas/dev-log.md"
   local ts=$(date '+%Y-%m-%d %H:%M')
   echo "- $ts · $msg" >> "$devlog"
-  bash "$HOME/projects/notes/note.sh" "$msg" 2>/dev/null
   echo "\033[0;32m✓ logged → dev-log.md + inbox\033[0m"
 }

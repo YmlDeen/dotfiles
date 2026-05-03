@@ -5,14 +5,9 @@
 # ── PATH ─────────────────────────────────────────────────
 export PATH="$HOME/.local/bin:$PATH"
 
-# ── VAULT & KOS ──────────────────────────────────────────
 export VAULT="/storage/emulated/0/Download/vault"
 export NOTE_VAULT="$VAULT"
 export NOTE_SH="$HOME/note.sh"
-export KOS_ROOT="$HOME/kos"
-export KOS_VAULT="$VAULT"
-export KOS_INBOX="$VAULT/00-inbox"
-export PATH="$KOS_ROOT:$PATH"
 
 # ── EDITOR ───────────────────────────────────────────────
 export EDITOR="nano"

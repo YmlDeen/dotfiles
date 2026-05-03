@@ -19,8 +19,8 @@ alias dl='cd /storage/emulated/0/Download'
 # ── GENERAL ──────────────────────────────────────────────
 alias c='clear'
 alias q='exit'
-alias nano='nano -l'
-alias nn='nano'
+alias nano='nano'
+alias nn='nano -l'
 alias nz='nano ~/.zshrc'
 alias cll='clear && pwd && ll'
 
@@ -57,8 +57,6 @@ alias health='bash ~/projects/tools/health.sh'
 alias forge='node ~/projects/tools/forge/index.js'
 alias pk='pk'
 
-# scanxl
-alias scanxl='node ~/projects/scanxl/cli.js'
 
 # Ecosystem SaaS
 alias ecosystem='cd /data/data/com.termux/files/home/projects/ecosystem && bash start.sh'
@@ -76,5 +74,6 @@ alias vsave='cd $VAULT && git add -A && git commit -m "vault: save" && git push 
 
 alias imp='node ~/projects/tools/imgprompt.mjs'
 alias vps='ssh -i ~/.ssh/id_ed25519 ubuntu@54.179.174.46'
-alias hm='hermes'
-alias hg='hermes gateway'
+
+alias debian='proot-distro login debian'
+alias fedora='proot-distro login fedora'

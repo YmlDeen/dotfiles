@@ -18,14 +18,15 @@ gsave() {
 gsaveall() {
   local msg="${1:-update}"
   local repos=(
-    ~/dotfiles
-    ~/kos
-    ~/projects/bugscan
-    ~/projects/exl
     ~/projects/linkbox
+    ~/projects/bugscan
     ~/projects/sysreport
     ~/projects/tools
-    ~/projects/notes
+    ~/projects/dotfiles
+    ~/projects/vault
+    ~/projects/promptkit
+    ~/projects/trak
+    ~/projects/nexus
   )
   local pushed=() skipped=() failed=()
 
