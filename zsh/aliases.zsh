@@ -70,7 +70,7 @@ alias clu='nx sync-claude && upcp && vsave && git -C ~/projects/vault push'
 
 alias cls='nx snap && ctx ~/projects/nexus --strip --sig --stat > ~/projects/nexus/tmp/ctx_nexus.txt && share ~/projects/nexus/tmp/ctx_nexus.txt && echo "แนบ CLAUDE.md + snap + ctx_nexus.txt"'
 
-alias vsave='cd $VAULT && git add -A && git commit -m "vault: save" && git push && ~/projects/vault-sync/vsync.sh'
+alias vsave='cd $VAULT && git add -A && git commit -m "vault: save" && git push'
 
 alias imp='node ~/projects/tools/imgprompt.mjs'
 alias vps='ssh -i ~/.ssh/id_ed25519 ubuntu@54.179.174.46'
