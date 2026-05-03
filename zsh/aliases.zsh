@@ -39,7 +39,6 @@ alias pip='pip3'
 # ── VAULT ────────────────────────────────────────────────
 alias upmv='mv /storage/emulated/0/Download/CLAUDE.md $VAULT/system/CLAUDE.md && echo "✓ CLAUDE.md → vault" || echo "✗ failed"'
 alias upcp='cp /storage/emulated/0/Download/CLAUDE.md $VAULT/system/CLAUDE.md && echo "✓ CLAUDE.md → vault" || echo "✗ failed"'
-# vsave moved to line 75 — vault-sync
 
 # ── CLI TOOLS ────────────────────────────────────────────
 alias bugscan='bash $HOME/projects/bugscan/bugscan.sh'
