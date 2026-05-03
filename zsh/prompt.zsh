@@ -100,7 +100,7 @@ local title="${D}░▒▓${R} ${D}◀${R}  ${G}i${W}x${C}Termux${R}  ${D}▶${R
   printf  "  ${D}STO${R}  "; _ix_sto; echo ""
   printf  "  ${D}CPU${R}  "; _ix_cpu; echo ""
   echo -e "$div"
-  echo -e "  ${D}»${R}  ${C}n${R} ${D}·${R} ${C}nlog${R} ${D}·${R} ${C}nd${R} ${D}·${R} ${C}j${R} ${D}·${R} ${C}gs${R} ${D}·${R} ${C}scall${R}"
+  echo -e "  ${D}»${R}  ${C}j${R} ${D}·${R} ${C}gs${R} ${D}·${R} ${C}scall${R}"
   echo ""
 }
 

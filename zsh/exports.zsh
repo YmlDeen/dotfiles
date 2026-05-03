@@ -6,8 +6,6 @@
 export PATH="$HOME/.local/bin:$PATH"
 
 export VAULT="/storage/emulated/0/Download/vault"
-export NOTE_VAULT="$VAULT"
-export NOTE_SH="$HOME/note.sh"
 
 # ── EDITOR ───────────────────────────────────────────────
 export EDITOR="nano"
