@@ -1,6 +1,6 @@
 # ╔══════════════════════════════════════════════════════╗
 # ║  prompt.zsh — prompt + header + safety zone          ║
-# ║  version: 3.4 | 2026-04-19                           ║
+# ║  version: 3.7 | 2026-05-05                           ║
 # ╚══════════════════════════════════════════════════════╝
 
 # ── SAFETY ZONE ──────────────────────────────────────────
@@ -23,9 +23,11 @@ _ix_status() {
   else echo "%F{red}✗%f"
   fi
 }
+
 PROMPT='
-%F{cyan}┌[%f%F{yellow}%/%f%F{cyan}]%f $(_ix_status)
-$(_ix_zone_arrow) '
+%F{196}╭─[%f%F{255}TERMUX%f%F{196}]%f
+%F{196}│%f %F{245}%/%f $(_ix_status)
+%F{196}╰─➤%f '
 
 # ── BAR BUILDER ──────────────────────────────────────────
 _ix_bar() {
@@ -83,14 +85,13 @@ _ix_cpu() {
 
 # ── HEADER ───────────────────────────────────────────────
 _ix_header() {
-  local D="\033[0;90m"   # dim gray
-  local G="\033[0;37m"   # gray
-  local W="\033[1;37m"   # white
-  local C="\033[1;36m"   # cyan
+  local D="\033[0;90m"
+  local G="\033[0;37m"
+  local W="\033[1;37m"
+  local C="\033[1;36m"
   local R="\033[0m"
 
-  # gradient: dim→gray→white→cyan→white→gray→dim
-local title="${D}░▒▓${R} ${D}◀${R}  ${G}i${W}x${C}Termux${R}  ${D}▶${R} ${D}▓▒░${R}"
+  local title="${D}░▒▓${R} ${D}◀${R}  ${G}i${W}x${C}Termux${R}  ${D}▶${R} ${D}▓▒░${R}"
   local div="${D}  ──────────────────────────────${R}"
 
   echo ""

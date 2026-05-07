@@ -265,3 +265,4 @@ nlog() {
   echo "- $ts · $msg" >> "$devlog"
   echo "\033[0;32m✓ logged → dev-log.md + inbox\033[0m"
 }
+

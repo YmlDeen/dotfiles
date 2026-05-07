@@ -26,3 +26,4 @@ export PATH="$HOME/bin:$PATH"
 
 # วางใน ~/.config/zsh/exports.zsh แล้วใส่ key จริง
 
+

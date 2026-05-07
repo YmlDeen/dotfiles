@@ -12,7 +12,7 @@ alias lg='lazygit'
 
 gsave() {
   local msg="${1:-update}"
-  git add . && git commit -m "$msg" && git push && echo "\033[0;32m✓ pushed: $msg\033[0m"
+  git add . && git commit -m "$msg" && git pull --rebase origin main && git push && echo "\033[0;32m✓ pushed: $msg\033[0m"
 }
 
 gsaveall() {
@@ -42,7 +42,7 @@ gsaveall() {
       echo "\033[0;90m  nothing to commit\033[0m"
       skipped+=("$name")
     else
-      git add . && git commit -m "$msg" && git push \
+      git add . && git commit -m "$msg" && git pull --rebase origin main && git push \
         && pushed+=("$name") \
         || failed+=("$name")
     fi

@@ -15,6 +15,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ~='cd $HOME'
 alias dl='cd /storage/emulated/0/Download'
+alias editzrc='nn aliases.zsh'
 
 # ── GENERAL ──────────────────────────────────────────────
 alias c='clear'
@@ -25,7 +26,7 @@ alias nz='nano ~/.zshrc'
 alias cll='clear && pwd && ll'
 
 # ── TOOLS ────────────────────────────────────────────────
-alias cat='bat --paging=never'
+#alias cat='bat --paging=never'
 alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -sh'
@@ -83,3 +84,26 @@ alias webserv='cd ~/projects/web && python3 -m http.server 8080'
 alias admin='cd ~/projects/web && python3 -m http.server 8080 & sleep 0.5 && echo "→ http://127.0.0.1:8080/admin.html"'
 
 alias ramclear='kill $(ps aux | grep -E "node|python" | grep -v grep | awk '"'"'{print $2}'"'"') 2>/dev/null; free -h'
+
+# proot
+alias alpine='proot-distro login alpine'
+
+
+
+hgw() {
+  tmux start-server
+  tmux new-session -d -s hermes-gw 'fedora -c "/root/.hermes/hermes-agent/venv/bin/hermes gateway"' 2>/dev/null
+  tmux ls
+}
+
+hgw() {
+  tmux start-server
+  tmux new-session -d -s hermes-gw 'proot-distro login fedora -- /root/.hermes/hermes-agent/venv/bin/hermes gateway'
+  sleep 2 && tmux ls
+}
+
+hgw() {
+  tmux start-server
+  tmux new-session -d -s hermes-gw 'proot-distro login fedora -- /root/.hermes/hermes-agent/venv/bin/hermes gateway'
+  sleep 2 && tmux ls
+}
